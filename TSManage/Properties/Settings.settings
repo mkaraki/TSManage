@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TSManage.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="filenameRegex" Type="System.String" Scope="User">
+      <Value Profile="(Default)">^(?&lt;ProgramName&gt;.+) \((?&lt;DateYear&gt;\d{4})(?&lt;DateMonth&gt;\d{2})(?&lt;DateDay&gt;\d{2})\-(?&lt;TimeHour&gt;\d{2})(?&lt;TimeMinute&gt;\d{2}) (?&lt;ServiceName&gt;.+)\)\.m2ts$</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
