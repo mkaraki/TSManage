@@ -41,29 +41,29 @@ var rules = yamld.Deserialize<Rule[]>(ruleyaml);
 
 ActionEnum actionenum = ActionEnum.PREVIEW;
 
+switch (action?.ToLower())
+{
+    case "copy":
+        actionenum = ActionEnum.COPY;
+        break;
+
+    case "move":
+        actionenum = ActionEnum.MOVE;
+        break;
+
+    case "delete":
+        actionenum = ActionEnum.DELETE;
+        break;
+
+    default:
+        Environment.Exit((int)ExitCodes.NOT_VALID_ACTION);
+        return;
+}
+
+bool originallyDelete = actionenum == ActionEnum.DELETE;
+
 if (dryRun)
     actionenum = ActionEnum.PREVIEW;
-else
-{
-    switch (action?.ToLower())
-    {
-        case "copy":
-            actionenum = ActionEnum.COPY;
-            break;
-
-        case "move":
-            actionenum = ActionEnum.MOVE;
-            break;
-
-        case "delete":
-            actionenum = ActionEnum.DELETE;
-            break;
-
-        default:
-            Environment.Exit((int)ExitCodes.NOT_VALID_ACTION);
-            return;
-    }
-}
 
 for (int i = 0; i < rules.Length; i++)
 {
@@ -88,7 +88,7 @@ for (int i = 0; i < rules.Length; i++)
             switch (actionenum)
             {
                 case ActionEnum.PREVIEW:
-                    Console.WriteLine("[PREV] {0} => {1}", from, dest);
+                    Console.WriteLine("[PREV] {0} => {1}", from, originallyDelete ? "DELETE" : dest);
                     break;
 
                 case ActionEnum.MOVE:

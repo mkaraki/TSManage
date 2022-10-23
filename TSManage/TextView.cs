@@ -32,6 +32,7 @@ namespace TSManage
             {
                 MessageBox.Show("No file found");
                 Close();
+                return;
             }
 
             string filecontent = await File.ReadAllTextAsync(_filePath, Encoding.GetEncoding("Shift_JIS"));
